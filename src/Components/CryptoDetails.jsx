@@ -44,7 +44,7 @@ const CryptoDetails = () => {
 
 
   return (
-    <Col className="coin-detail-container">
+    <Col className="coin-detail-container" >
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
           { cryptoDetails?.name }({cryptoDetails?.symbol}) Price
@@ -65,7 +65,9 @@ const CryptoDetails = () => {
 
       <Col className="stats-container">
         <Col className="coin-value-statistics">
-          <Col className="coin-value-statistic-heading">
+          <Col className="coin-value-statistic-heading" style={{
+            marginTop: '2.5em',
+          }}>
             <Title level={3} className="coin-detauls-g=heading">
               {cryptoDetails?.name} Value Statistics
             </Title>
@@ -83,6 +85,31 @@ const CryptoDetails = () => {
             </Col>
           ))}
         </Col>
+
+        <Col className="other-stats-info">
+          <Col className="coin-value-statistic-heading">
+            <Title level={3} className="coin-detauls-g=heading">
+             Other {cryptoDetails?.name} Statistics
+            </Title>
+
+          </Col>
+          {genericStats.map(({ icon, title, value }) => (
+            <Col className="coin-stats">
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title level={3} className="coin-details-heading">
+            What is {cryptoDetails?.name} ?
+          </Title>
+        </Row>
       </Col>
     </Col>
   )
