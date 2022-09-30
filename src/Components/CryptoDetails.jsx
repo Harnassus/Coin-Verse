@@ -17,16 +17,19 @@ const CryptoDetails = () => {
   const cryptoDetails = data?.data?.coin;
   const [ timePeriod, setTimePeriod ] = useState('7d');
 
+  let volume = 0;
+  if (cryptoDetails) {
+    let values = Object.values(cryptoDetails)
+    volume = values[11];
+  }
   
-  console.log(data);
-
    
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
+    { title: '24h Volume', value: `$ ${volume && millify(volume)}`, icon: <ThunderboltOutlined /> },
     { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
     { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
@@ -46,6 +49,40 @@ const CryptoDetails = () => {
         <Title level={2} className="coin-name">
           { cryptoDetails?.name }({cryptoDetails?.symbol}) Price
         </Title>
+        <p>
+          {cryptoDetails?.name} live price in US dollars.
+          View value statistics, market cap and supply.
+        </p>
+      </Col>
+      <Select
+        defaultValue="7d"
+        className="select-timeperiod"
+        placeholder='Select Time Period'
+        onChange={(value) => setTimePeriod(value)}
+      >
+        {time.map((date) => <Option key={date}>{date}</Option>)}
+      </Select>
+
+      <Col className="stats-container">
+        <Col className="coin-value-statistics">
+          <Col className="coin-value-statistic-heading">
+            <Title level={3} className="coin-detauls-g=heading">
+              {cryptoDetails?.name} Value Statistics
+            </Title>
+            <p>
+              An overview showing the stats of {cryptoDetails?.name}
+            </p>
+          </Col>
+          {stats.map(({ icon, title, value }) => (
+            <Col className="coin-stats">
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
       </Col>
     </Col>
   )
