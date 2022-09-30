@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import HTMLReactParser from 'html-react-parser'
+import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom'
 import millify from 'millify';
 import { Col, Row, Typography, Select } from 'antd'
@@ -18,10 +18,14 @@ const CryptoDetails = () => {
   const [ timePeriod, setTimePeriod ] = useState('7d');
 
   let volume = 0;
+  let description = '';
   if (cryptoDetails) {
     let values = Object.values(cryptoDetails)
-    volume = values[11];
+    volume = values[ 11 ];
+    description = values[3]
+    // console.log(values);
   }
+  console.log(description);
   
    
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
@@ -106,10 +110,26 @@ const CryptoDetails = () => {
       </Col>
       <Col className="coin-desc-link">
         <Row className="coin-desc">
-          <Title level={3} className="coin-details-heading">
-            What is {cryptoDetails?.name} ?
+          <Title level={2} className="coin-details-heading">
+            What is {cryptoDetails?.name}?
+            {parse(description)}
           </Title>
         </Row>
+        <Col className="coin-links">
+          <Title level={2} className="coin-details-heading">
+            {cryptoDetails?.name} Links
+          </Title>
+          {cryptoDetails?.links.map((link) => (
+            <Row className="coin-link" key={link.name}>
+              <Title level={5} className="link-name">
+                {link.type}
+              </Title>
+              <a href={link.url} target="_blank" rel="noreferrer">
+                {link.name}
+              </a>
+            </Row>
+          ))}
+        </Col>
       </Col>
     </Col>
   )
