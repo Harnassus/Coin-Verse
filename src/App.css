@@ -14,6 +14,7 @@
     box-sizing: border-box;
 }
 
+
 a:hover{
     color: var(--pink) !important;
 }
@@ -53,7 +54,9 @@ a:hover{
     width: 100%;
 }
 .logo{
-    margin:0 0 0 15px;
+    margin-left: 15px;
+    margin-bottom: 0 !important;
+    align-self: center;
 }
 .logo a{
    color: white;
