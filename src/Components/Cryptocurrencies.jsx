@@ -81,7 +81,7 @@ const Cryptocurrencies = ({ simplified }) => {
         </Row>
       )}
       {simplified && activeMobile ? (
-        <div gutter={[ 32, 32 ]} className='crypto-card-container'>
+        <div className='crypto-card-container'>
 
           {coin?.map((currency) => (
 
@@ -105,7 +105,7 @@ const Cryptocurrencies = ({ simplified }) => {
           ))}
         </div>
       ) : (
-        <Row gutter={[ 32, 32 ]} className='crypto-card-container'>
+        <Row gutter={[ 32, 32 ]} className=''>
 
           {coin?.map((currency) => (
 
