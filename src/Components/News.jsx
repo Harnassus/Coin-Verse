@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd'
 import moment from 'moment'
 
@@ -16,6 +16,27 @@ const News = ({ simplified }) => {
 
   const { data: cryptoNews } = useGetNewsQuery({ newsCategory, count: simplified ? 6 : 12 })
   const { data } = useGetCoinsQuery(100);
+  const [ activeMobile, setActiveMobile ] = useState(true);
+  const [ screenSize, setScreenSize ] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth)
+
+    window.addEventListener('resize', handleResize)
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize)
+  })
+
+  useEffect(() => {
+    if (screenSize > 500) {
+      setActiveMobile(false);
+    } else {
+      setActiveMobile(true);
+    }
+
+  }, [ screenSize ]);
 
   if (!cryptoNews?.value) return "Loading.....";
   
@@ -37,28 +58,57 @@ const News = ({ simplified }) => {
           </Select>
         </Col>
       )}
-      {cryptoNews.value.map((news, i) => (
-        <Col xs={24} sm={12} lg={8} key={i}>
-          <Card hoverable className="news-card">
-            <a href={news.url} target="_blank" rel="noreferrer">
-              <div className="news-image-container">
-                <Title className="news-title" level={4}>{news.name }</Title>
-                <img style={{ maxWidth: '200px', maxHeight: '100px'}} src={news?.image?.thumbnail?.contentUrl || demoDisplayImage} alt='News' />
-              </div>
-              <p>
-                { news.description > 100 ? `${news.description.substring(0, 100)}...` : news.description}
-              </p>
-              <div className="provider-container">
-                <div>
-                  <Avatar src={news.provider[ 0 ]?.image?.thumbnail?.contentUrl || demoDisplayImage} />
-                  <Text className="provider-name">{news.provider[0]?.name}</Text>
-                </div>
-                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
-              </div>
-            </a>
-          </Card>
-        </Col>
-      ))}
+      {simplified && activeMobile ? (
+         <div className="crypto-card-container">
+          {cryptoNews.value.map((news, i) => (
+            <Col xs={24} sm={12} lg={8} className="news-container" key={i}>
+              <Card hoverable className="news-card">
+                <a href={news.url} target="_blank" rel="noreferrer">
+                  <div className="news-image-container">
+                    <Title className="news-title" level={4}>{news.name }</Title>
+                    <img style={{ maxWidth: '200px', maxHeight: '100px'}} src={news?.image?.thumbnail?.contentUrl || demoDisplayImage} alt='News' />
+                  </div>
+                  <p>
+                    { news.description > 100 ? `${news.description.substring(0, 100)}...` : news.description}
+                  </p>
+                  <div className="provider-container">
+                    <div>
+                      <Avatar src={news.provider[ 0 ]?.image?.thumbnail?.contentUrl || demoDisplayImage} />
+                      <Text className="provider-name">{news.provider[0]?.name}</Text>
+                    </div>
+                    <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                  </div>
+                </a>
+              </Card>
+            </Col>
+          ))}
+        </div>
+        ) : (
+          <div className="news">
+                  {cryptoNews.value.map((news, i) => (
+                      <Col xs={24} sm={12} lg={8} className="news-container" key={i}>
+                        <Card hoverable className="news-card">
+                          <a href={news.url} target="_blank" rel="noreferrer">
+                            <div className="news-image-container">
+                              <Title className="news-title" level={4}>{news.name }</Title>
+                            </div>
+                            <p>
+                              { news.description > 100 ? `${news.description.substring(0, 100)}...` : news.description}
+                            </p>
+                            <div className="provider-container">
+                              <div>
+                                <Avatar src={news.provider[ 0 ]?.image?.thumbnail?.contentUrl || demoDisplayImage} />
+                                <Text className="provider-name">{news.provider[0]?.name}</Text>
+                              </div>
+            
+                            </div>
+                          </a>
+                        </Card>
+                      </Col>
+                  ))}
+            </div>
+       )
+      }
     </Row>
   )
 }
