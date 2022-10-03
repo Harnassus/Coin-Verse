@@ -27,7 +27,7 @@ a:hover{
 
 .navbar{
     flex: 0.2;
-    background-color: #251B37 !important;
+    
 }
 
 .main{
@@ -45,11 +45,11 @@ a:hover{
     margin: 10px;
     height: 100vh;
     margin: 0px;
-    background-color: #251B37;
+    background-color: #001529;
 }
 
 .logo-container{
-    background-color: #251B37;
+    background-color: #001529;
     display: flex;
     padding: 20px;
     align-items: center;
@@ -90,15 +90,18 @@ a:hover{
     color: #B7A7AE;
      width: 100%;
 }
+.home-title{
+    color: #F6F2F6 !important;
+}
 @media screen and (max-width:1300px){
     .main{
-        margin-left: 50px;
+        margin-left: 20px;
     }
 }
 
 @media screen and (max-width:1170px){
     .main{
-        margin-left: 50px;
+        margin-left: 20px;
     }
 }
 
@@ -311,6 +314,11 @@ a:hover{
 		gap: 12px !important;
         min-height: 200px !important;
     }
+    .crypto-div{
+        flex: 0 0 100%;
+        width: 310px;
+        scroll-snap-align: start
+    }
     .home-heading-container{
         display: flex;
         flex-direction: column;
@@ -321,6 +329,12 @@ a:hover{
     color: #F6F2F6 !important;
     text-align: center;
      font-weight: bold;
+}
+.home-title:nth-child(1){
+    font-size: 1.4em !important;
+}
+.show-more{
+    font-size: 1.3em !important;
 }
 }
 
@@ -392,7 +406,7 @@ width: 100%;
 }
 
 .crypto-card{
-    min-width: 250px;
+    min-width: 150px;
 }
 .crypto-card .crypto-image{
     width:35px;
@@ -416,4 +430,8 @@ width: 100%;
 }
 .news-container{
     margin-bottom: 1em;
+}
+h3, 
+p{
+    color: #E1D5D9 !important;
 }
