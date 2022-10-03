@@ -315,7 +315,9 @@ a:hover{
         min-height: 200px !important;
     }
     .crypto-div{
-        width: 300px
+        flex: 0 0 100%;
+        width: 310px;
+        scroll-snap-align: start
     }
     .home-heading-container{
         display: flex;
@@ -327,6 +329,12 @@ a:hover{
     color: #F6F2F6 !important;
     text-align: center;
      font-weight: bold;
+}
+.home-title:nth-child(1){
+    font-size: 1.4em !important;
+}
+.show-more{
+    font-size: 1.3em !important;
 }
 }
 
@@ -400,9 +408,6 @@ width: 100%;
 .crypto-card{
     min-width: 150px;
 }
-.crypto-div{
-    background-color: #58545B !important;
-}
 .crypto-card .crypto-image{
     width:35px;
 }
@@ -425,4 +430,8 @@ width: 100%;
 }
 .news-container{
     margin-bottom: 1em;
+}
+h3, 
+p{
+    color: #E1D5D9 !important;
 }

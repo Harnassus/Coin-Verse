@@ -53,10 +53,15 @@ const CryptoDetails = () => {
   return (
     <Col className="coin-detail-container" >
       <Col className="coin-heading-container">
-        <Title level={2} className="coin-name">
+        <Title level={2} className="coin-name" style={{
+          color: '#E1D5D9'
+        }}>
           { cryptoDetails?.name }({cryptoDetails?.symbol}) Price
         </Title>
-        <p>
+        <p style={{
+          color: '#E1D5D9',
+          textAlign: 'center'
+        }}>
           {cryptoDetails?.name} live price in US dollars.
           View value statistics, market cap and supply.
         </p>
@@ -73,12 +78,18 @@ const CryptoDetails = () => {
 
       <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} />
 
-      <Col className="stats-container">
+      <Col className="stats-container" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistic-heading" style={{
             marginTop: '2.5em',
           }}>
-            <Title level={3} className="coin-detauls-g=heading">
+            <Title level={3} className="coin-detauls-g=heading" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>
               {cryptoDetails?.name} Value Statistics
             </Title>
             <p>
@@ -88,17 +99,29 @@ const CryptoDetails = () => {
           {stats.map(({ icon, title, value }) => (
             <Col className="coin-stats">
               <Col className="coin-stats-name">
-                <Text>{icon}</Text>
-                <Text>{title}</Text>
+                <Text style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{icon}</Text>
+                <Text style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{title}</Text>
               </Col>
-              <Text className="stats">{value}</Text>
+              <Text className="stats" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{value}</Text>
             </Col>
           ))}
         </Col>
 
         <Col className="other-stats-info">
           <Col className="coin-value-statistic-heading">
-            <Title level={3} className="coin-detauls-g=heading">
+            <Title level={3} className="coin-detauls-g=heading" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}> 
              Other {cryptoDetails?.name} Statistics
             </Title>
 
@@ -106,10 +129,19 @@ const CryptoDetails = () => {
           {genericStats.map(({ icon, title, value }) => (
             <Col className="coin-stats">
               <Col className="coin-stats-name">
-                <Text>{icon}</Text>
-                <Text>{title}</Text>
+                <Text style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{icon}</Text>
+                <Text style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{title}</Text>
               </Col>
-              <Text className="stats">{value}</Text>
+              <Text className="stats" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>{value}</Text>
             </Col>
           ))}
         </Col>
@@ -117,7 +149,10 @@ const CryptoDetails = () => {
 
       <Col className="coin-desc-link">
         <Row className="coin-desc">
-          <Title level={2} className="coin-details-heading">
+          <Title level={2} className="coin-details-heading" style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>
             What is {cryptoDetails?.name}?
             {parse(description)}
           </Title>
