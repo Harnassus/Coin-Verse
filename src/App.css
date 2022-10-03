@@ -27,7 +27,7 @@ a:hover{
 
 .navbar{
     flex: 0.2;
-    background-color: #251B37 !important;
+    
 }
 
 .main{
@@ -45,11 +45,11 @@ a:hover{
     margin: 10px;
     height: 100vh;
     margin: 0px;
-    background-color: #251B37;
+    background-color: #001529;
 }
 
 .logo-container{
-    background-color: #251B37;
+    background-color: #001529;
     display: flex;
     padding: 20px;
     align-items: center;

@@ -151,7 +151,6 @@ const CryptoDetails = () => {
         <Row className="coin-desc">
           <Title level={2} className="coin-details-heading" style={{
                 color: '#E1D5D9',
-                textAlign: 'center'
             }}>
             What is {cryptoDetails?.name}?
             {parse(description)}
@@ -162,11 +161,17 @@ const CryptoDetails = () => {
             {cryptoDetails?.name} Links
           </Title>
           {cryptoDetails?.links.map((link) => (
-            <Row className="coin-link" key={link.name}>
-              <Title level={5} className="link-name">
+            <Row className="coin-link" key={link.name} style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }}>
+              <Title level={5} style={{
+                color: '#E1D5D9',
+                textAlign: 'center'
+            }} className="link-name">
                 {link.type}
               </Title>
-              <a href={link.url} target="_blank" rel="noreferrer">
+              <a href={link.url} target="_blank"  rel="noreferrer">
                 {link.name}
               </a>
             </Row>
