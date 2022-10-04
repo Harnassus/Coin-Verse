@@ -115,7 +115,7 @@ const Cryptocurrencies = ({ simplified }) => {
                 <Card
                   style={{
                     borderRadius: "5px",
-                    overflow: "hidden"
+                    overflow: "hidden",
                   }}
                   className="crypto-div"
                   title={` ${currency.rank}. ${currency.name}`}
