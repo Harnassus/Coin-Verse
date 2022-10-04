@@ -56,12 +56,11 @@ a:hover{
     width: 100%;
 }
 .logo{
-    margin-left: 15px;
+    
     margin-bottom: 0 !important;
     align-self: center;
-}
-.logo a{
-   color: #FFECEF !important;
+    width: 200px;
+    object-fit: cover;
 }
 .heading{
     color: #F6F2F6 !important;

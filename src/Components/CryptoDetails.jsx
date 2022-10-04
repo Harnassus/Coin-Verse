@@ -14,9 +14,9 @@ const { Option } = Select;
 
 const CryptoDetails = () => {
   const { coinId } = useParams();
-  const [ timeperiod, setTimeperiod ] = useState('7d');
+  const [ timePeriod, setTimePeriod ] = useState('7d');
   const { data, isFetching } = useGetCoinsDetailsQuery(coinId);
-  const { data: coinHistory} = useGetCoinHistoryQuery({coinId, timeperiod});
+  const { data: coinHistory} = useGetCoinHistoryQuery({coinId, timePeriod });
   const cryptoDetails = data?.data?.coin;
 
   let volume = 0;
@@ -27,7 +27,7 @@ const CryptoDetails = () => {
     description = values[3]
     // console.log(values);
   }
-  console.log(coinHistory);
+
   
   if (isFetching) return 'Loading....'
    
@@ -68,10 +68,10 @@ const CryptoDetails = () => {
       </Col>
 
       <Select
-        defaultValue="7d"
+        defaultValue='7d'
         className="select-timeperiod"
         placeholder='Select Time Period'
-        onChange={(value) => setTimeperiod(value)}
+        onChange={(value) => setTimePeriod(value)}
       >
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
@@ -118,7 +118,7 @@ const CryptoDetails = () => {
 
         <Col className="other-stats-info">
           <Col className="coin-value-statistic-heading">
-            <Title level={3} className="coin-detauls-g=heading" style={{
+            <Title level={3} className="coin-details-heading" style={{
                 color: '#E1D5D9',
                 textAlign: 'center'
             }}> 
