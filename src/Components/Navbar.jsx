@@ -3,7 +3,7 @@ import { Button, Menu, Typography, Avatar } from 'antd'
 import { Link } from 'react-router-dom'
 import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons'
 
-import logoimage from '../images/cryptocurrency.png'
+import logoimage from '../images/Logo.png'
 
 const Navbar = () => {
     const [ activeMenu, setActiveMenu ] = useState(true);
@@ -32,15 +32,13 @@ const Navbar = () => {
     <div className='nav-container'>
           <div className='logo-container'>
               
-              <Avatar
-                  className='avatar'
+              <img
+                  className='logo'
                   src={logoimage}
-                  size='large'
+                  alt='logo'
               />
 
-              <Typography.Title level={2} className='logo' >
-                  <Link to='/' >Coin Verse</Link>
-              </Typography.Title>
+              
 
               <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
                   <MenuOutlined />
