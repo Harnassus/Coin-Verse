@@ -27,7 +27,7 @@ const CryptoDetails = () => {
     description = values[3]
     // console.log(values);
   }
-  console.log(coinHistory);
+
   
   if (isFetching) return 'Loading....'
    
@@ -118,7 +118,7 @@ const CryptoDetails = () => {
 
         <Col className="other-stats-info">
           <Col className="coin-value-statistic-heading">
-            <Title level={3} className="coin-detauls-g=heading" style={{
+            <Title level={3} className="coin-details-heading" style={{
                 color: '#E1D5D9',
                 textAlign: 'center'
             }}> 

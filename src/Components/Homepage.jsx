@@ -16,7 +16,6 @@ const Homepage = () => {
 
   const { data, isFetching } = useGetCoinsQuery(10);
   const globalStats = data?.data?.stats;
-  console.log(data?.data);
 
   if(isFetching) return '...Loading...';
 
